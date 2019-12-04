@@ -6,7 +6,7 @@ This is a microservice written in go that queries an online stock tracking syste
 
 The microservice is built into a docker image and then this image is run in containers on kubernetes
 
-## prequisites
+## prerequisites
 The environment variable XKEY needs to be set to a valid apikey for the https://www.alphavantage.co/query?apikey=demo&function=TIME_SERIES_DAILY_ADJUSTED&symbol=MSFT online stock tracking system
 
 For example
