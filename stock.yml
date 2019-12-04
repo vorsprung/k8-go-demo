@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stockapp
+spec:
+  selector:
+    matchLabels:
+      run: load-balancer-example
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: load-balancer-example
+    spec:
+      containers:
+        - name: stockapp
+          image: vorsprung/stock
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: XKEY
+              valueFrom:
+                secretKeyRef:
+                  name: apikey
+                  key: apikey
+          imagePullPolicy: Never
