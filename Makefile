@@ -16,10 +16,16 @@ ifndef XKEY
 $(error XKEY is not set, should have a apikey)
 endif
 
-.PHONY: test
-test:
+.PHONY: get
+get:
 	$(GO) get -t .
+
+.PHONY: test
+test: get
 	$(GO) test -v .
+
+test-all: get 
+	$(GO) test -v -tags=http
 
 .PHONY: convey
 convey:
