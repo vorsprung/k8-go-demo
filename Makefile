@@ -44,12 +44,11 @@ image:
 	docker build --build-arg apikey=$(XKEY) -t $(DOCKERUSER)/stock .
 	docker push $(DOCKERUSER)/stock
 
-secret.yml:
-	echo -n $(XKEY) | base64 >> s2.txt
-	cat s1.txt s2.txt > secret.yml
-	kubectl apply -f secret.yml
+.PHONY: secret
+secret:
+	python secret_file.py | kubectl apply
 
-k8: secret.yml
+k8: secret
 	kubectl apply -f stock.yml
 	-kubectl expose deployment stockapp --type=NodePort --name=stockapp-service
 
