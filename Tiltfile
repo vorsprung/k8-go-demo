@@ -1,0 +1,6 @@
+print('Hello Tiltfile')
+k8s_yaml('stock.yml')
+secret_text = local('python ./secret_file.py')
+k8s_yaml(secret_text)
+docker_build('vorsprung/stock','.')
+k8s_resource('stockapp', port_forwards='9000')
