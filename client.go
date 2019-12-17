@@ -71,6 +71,7 @@ func Summarize(b Body, last int) Summary {
 		ordered = append(ordered, ymd)
 	}
 	sort.Sort(sort.Reverse(sort.StringSlice(ordered)))
+	//sort.Sort(sort.StringSlice(ordered))
 
 	for _, date := range ordered {
 		day := b.Series[date]

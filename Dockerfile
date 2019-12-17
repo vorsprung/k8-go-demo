@@ -9,7 +9,7 @@ COPY . .
 # libraries)
 # RUN CGO_ENABLED=0 go build 
 RUN go version
-
+RUN GOPATH=/tmp go test -v .
 RUN GOPATH=/tmp CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o /stockapp scripts/main.go
 
 # Create a "nobody" non-root user for the next image by crafting an /etc/passwd
