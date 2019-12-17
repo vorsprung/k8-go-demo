@@ -1,4 +1,5 @@
 print('Hello Tiltfile')
+local_resource('unittest',cmd='go test -v', deps=['*.go', 'scripts/*.go'])
 k8s_yaml('stock.yml')
 secret_text = local('python ./secret_file.py')
 k8s_yaml(secret_text)
