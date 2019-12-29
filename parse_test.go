@@ -18,6 +18,7 @@ func TestParse(t *testing.T) {
 	assert.Len(t, r.Series, 100)
 }
 
+// TestSummary   check conversion is ok
 func TestSummary(t *testing.T) {
 	td := helperLoadBytes(t, "query.json")
 	r := JSONtoStock(td)
